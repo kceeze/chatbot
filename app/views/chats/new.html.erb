@@ -1,0 +1,30 @@
+<div data-controller="chats" class="chats-container">
+	<div class="bg-[url('/assets/robot3.jpg')] font-[sans-serif]">
+		<div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+			<div class="max-w-md w-full">
+				<div class="p-8 rounded-2xl bg-white shadow">
+					<h2 class="text-gray-800 text-center text-2xl font-bold">Chat</h2>
+					<div class="pr-4 h-[474px]" style="min-width: 100%; display: table;">			
+						<!-- Chat Container -->
+						<div class="pr-4 h-[474px]" style="min-width: 100%; display: table;">
+							<%= turbo_stream_from "chat_messages_#{@chat.id}" %> 
+							<div id="chat_messages_<%= @chat.id %>" >
+								<% @chat_messages.each do |chat_message| %> 
+										<%= render partial: "chat_messages/message", locals: {chat_message: chat_message} %>
+								<% end %> 
+							</div>	
+						</div>
+					<!-- Message Box -->
+					<div class="flex items-center pt-0">
+						<form method="POST" action="/chat_messages" data-controller="chat-messages" data-action="turbo:submit-end->chat-messages#reset" class="flex items-center justify-center w-full space-x-2">
+							<input  name="chat_message[message]" class="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
+								placeholder="Type your message" value="">
+						<button type="submit" class="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-black hover:bg-[#111827E6] h-10 px-4 py-2">Send</button>
+						<input type="hidden" name="chat_message[chat_id]" value="<%= @chat.id %>">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

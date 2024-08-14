@@ -1,0 +1,22 @@
+<div class="bg-[url('/assets/robot2.jpg')] font-[sans-serif]">
+  <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+    <div class="max-w-md w-full">
+ 
+      <div class="p-8 rounded-2xl bg-white shadow">
+        <h2 class="text-gray-800 text-center text-2xl font-bold">Chat</h2>
+        <%= form_with( model: @chat) do |f| %> 
+          <div>
+            <div class="relative flex items-center">
+              <%= f.text_area :prompt, class:"w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600", placeholder:"Enter password"%> 
+   
+            </div>
+          </div>
+
+          <div class="!mt-8">
+            <%= f.submit "Send", class: "w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

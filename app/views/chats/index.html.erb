@@ -1,0 +1,11 @@
+<div class="font-[sans-serif]">
+  <% if @chats.present? %> 
+    <% @chats.each do | chat| %> 
+
+    <% end %> 
+  <% else %>
+  <h2 class="text-gray-800 text-center text-2xl font-bold">No Chats Available</h2>
+  <% end %> 
+
+   <h2 class="text-gray-800 text-center text-2xl font-bold"><%= link_to "New Chat",new_chat_path, class: "w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none" %></h2>
+</div>
